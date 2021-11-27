@@ -1,0 +1,12 @@
+Average income for Females: $28646.32
+Average income for Males: $27225.83
+...
+Number of Females with a Mortgage and Savings account: 71
+...
+Number of Inner City Males with a car and 1 child: 15
+Number of Rural Males with a car and 1 child: 9
+Number of Suburban Males with a car and 1 child: 3
+Number of Town Males with a car and 1 child: 7
+...
+Name: Shahaan Mirza
+Date: 11/21/2021 20:43:43
