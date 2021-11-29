@@ -148,7 +148,7 @@ public class BankRecords extends Client {
             robjs[idx].setSave_act(rowData.get(8)); //get 9th column
             robjs[idx].setCurrent_act(rowData.get(9)); //get 10th column
             robjs[idx].setMortgage(rowData.get(10)); //get 11th column
-
+            robjs[idx].setPep(rowData.get(11));
               /*continue processing arraylist item values into each array
                 object-> robjs[] by index*/
             idx++;

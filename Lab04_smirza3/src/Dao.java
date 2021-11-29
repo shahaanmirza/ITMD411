@@ -23,7 +23,7 @@ public class Dao {
             // Execute create query
             System.out.println("Creating table in given database...");
             stmt = conn.connect().createStatement();
-            String sql = "CREATE TABLE S_Mirz_tab " +
+            String sql = "CREATE TABLE S_Mirz_tab2 " +
                     "(pid INTEGER not NULL AUTO_INCREMENT, " +
                     " id VARCHAR(10), " +
                     " income numeric(8,2), " +
@@ -52,7 +52,7 @@ public class Dao {
 
             // finish string assignment to insert all object data
             // (id, income, pep) into your database table
-            sql = "INSERT INTO S_Mirz_tab(field 1, field 2, field n) " +
+            sql = "INSERT INTO S_Mirz_tab2(ID, Income, Pep) " +
                         "VALUES (' "+ robjs[i].getId() +" ', ' "+ robjs[i].getIncome() +" ', ' "+ robjs[i].getPep() +" ' )";
             stmt.executeUpdate(sql);
             }
