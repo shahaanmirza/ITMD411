@@ -21,7 +21,7 @@ public class LoanProcessing extends BankRecords {
             // Retrieve data by column name (i.e., for id,income,pep)
             try {
                 String retrieveData =
-                        rs.getInt("id") + "\t\t" +
+                        rs.getString("id") + "\t\t" +
                         rs.getDouble("income") + "\t" +
                         rs.getString("pep");
                 // Display values for id,income,pep
