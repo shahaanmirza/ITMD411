@@ -113,7 +113,7 @@ public class Dao {
 		int id = 0;
 		try {
 			statement = getConnection().createStatement();
-			statement.executeUpdate("Insert into smirza3_tickets" + "(ticket_issuer, ticket_description) values(" + " '"
+			statement.executeUpdate("INSERT INTO smirza3_tickets" + "(ticket_issuer, ticket_description) VALUES(" + " '"
 					+ ticketName + "','" + ticketDesc + "')", Statement.RETURN_GENERATED_KEYS);
 
 			// retrieve ticket id number newly auto generated upon record insertion
