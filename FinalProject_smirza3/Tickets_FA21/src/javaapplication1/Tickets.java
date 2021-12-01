@@ -193,6 +193,47 @@ public class Tickets extends JFrame implements ActionListener {
 			}
 		}
 
+		else if (e.getSource() == mnuItemUpdate) {
+
+			// update a ticket
+			try {
+
+				String ticketID = JOptionPane.showInputDialog(null, "Enter ticket ID to be updated");
+
+				//check for which parameter wants to be updated
+				// array with parameter choices
+				String[] choices = {"Update Name", "Update Description"};
+				String input = (String) JOptionPane.showInputDialog(null,
+						"What would you like to update?",
+						"Update a Ticket",
+						JOptionPane.QUESTION_MESSAGE,
+						null,
+						choices,
+						choices[0]);
+
+				//set input to oldparam value
+				String oldParam;
+				String newParam;
+				if(input.equals("Update Name")) {
+					oldParam = "ticket_issuer";
+					newParam = JOptionPane.showInputDialog(null, "Enter new name");
+				}
+				else {
+					oldParam = "ticket_description";
+					newParam = JOptionPane.showInputDialog(null, "Enter new description");
+				}
+
+				// run updateRecords
+				dao.updateRecords(ticketID, oldParam, newParam);
+				System.out.println("Changes were made to ticket " + ticketID + "...");
+				JOptionPane.showMessageDialog(null, "Ticket ID: " + ticketID + " was updated.");
+			}
+			catch (Exception se) {
+				se.printStackTrace();
+				System.out.println("Could not update the ticket...");
+			}
+
+		}
 	}
 
 }
