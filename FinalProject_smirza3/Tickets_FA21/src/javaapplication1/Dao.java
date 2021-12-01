@@ -146,7 +146,7 @@ public class Dao {
 	}
 
 	// continue coding for updateRecords implementation
-	public void updateRecords(int id, String oldParameter, String updatedParameter) {
+	public void updateRecords(String id, String oldParameter, String updatedParameter) {
 		try {
 			statement = getConnection().createStatement();
 
@@ -174,7 +174,7 @@ public class Dao {
 	}
 
 	// continue coding for deleteRecords implementation
-	public void deleteRecords(int id) {
+	public void deleteRecords(String id) {
 		try {
 			statement = getConnection().createStatement();
 
