@@ -165,9 +165,9 @@ public class Tickets extends JFrame implements ActionListener {
 
 		else if (e.getSource() == mnuItemDelete) {
 
-			//delete a ticket
+			// delete a ticket
 			try {
-				//get id of ticket
+				// get id of ticket
 				String ticketID = JOptionPane.showInputDialog(null,
 						"Enter ticket ID to be deleted");
 
@@ -177,6 +177,7 @@ public class Tickets extends JFrame implements ActionListener {
 						"Delete This Ticket",
 						JOptionPane.YES_NO_OPTION);
 				if(response == JOptionPane.YES_OPTION) {
+					// delete ticket associated with ID
 					dao.deleteRecords(ticketID);
 					JOptionPane.showMessageDialog(null,
 							"Ticket ID: " + ticketID + " was deleted.");
