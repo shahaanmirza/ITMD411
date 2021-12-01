@@ -162,10 +162,35 @@ public class Tickets extends JFrame implements ActionListener {
 				e1.printStackTrace();
 			}
 		}
-		/*
-		 * continue implementing any other desired sub menu items (like for update and
-		 * delete sub menus for example) with similar syntax & logic as shown above
-		 */
+
+		else if (e.getSource() == mnuItemDelete) {
+
+			//delete a ticket
+			try {
+				//get id of ticket
+				String ticketID = JOptionPane.showInputDialog(null,
+						"Enter ticket ID to be deleted");
+
+				//check to see if user wants to continue with delete
+				int response = JOptionPane.showConfirmDialog(null,
+						"Do you want to continue with this action?",
+						"Delete This Ticket",
+						JOptionPane.YES_NO_OPTION);
+				if(response == JOptionPane.YES_OPTION) {
+					dao.deleteRecords(ticketID);
+					JOptionPane.showMessageDialog(null,
+							"Ticket ID: " + ticketID + " was deleted.");
+					System.out.println("Record has been deleted");
+				}
+				else {
+					System.exit(0);
+				}
+			}
+			catch (Exception se) {
+				se.printStackTrace();
+				System.out.println("User did not continue with record deletion");
+			}
+		}
 
 	}
 
