@@ -144,7 +144,33 @@ public class Dao {
 		}
 		return results;
 	}
+
 	// continue coding for updateRecords implementation
+	public void updateRecords(int id, String oldParameter, String updatedParameter) {
+		try {
+			statement = getConnection().createStatement();
+
+			//set update target to be the tickets table
+			statement.executeQuery("UPDATE smirza3_tickets");
+			//apply updates to selected parameter (ticket_id, ticket_issuer, or ticket_description)
+			statement.executeQuery("SET " + oldParameter + " = '" + updatedParameter + "'");
+			//set update target to the ticket entry with provided id
+			statement.executeQuery("WHERE ticket_id " + id);
+
+			//print to console
+			System.out.println("Records have been updated...");
+
+			//close objects
+			statement.close();
+			connect.close();
+		}
+
+		catch (SQLException se) {
+			se.printStackTrace();
+			System.out.println("There was a problem updating the records");
+		}
+
+	}
 
 	// continue coding for deleteRecords implementation
 }
