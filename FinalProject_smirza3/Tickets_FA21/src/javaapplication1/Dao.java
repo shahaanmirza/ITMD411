@@ -155,10 +155,10 @@ public class Dao {
 			//apply updates to selected parameter (ticket_id, ticket_issuer, or ticket_description)
 			statement.executeQuery("SET " + oldParameter + " = '" + updatedParameter + "'");
 			//set update target to the ticket entry with provided id
-			statement.executeQuery("WHERE ticket_id " + id);
+			statement.executeQuery("WHERE ticket_id = " + id);
 
 			//print to console
-			System.out.println("Records have been updated...");
+			System.out.println("Record " + id + " has been updated...");
 
 			//close objects
 			statement.close();
@@ -167,10 +167,32 @@ public class Dao {
 
 		catch (SQLException se) {
 			se.printStackTrace();
-			System.out.println("There was a problem updating the records");
+			System.out.println("There was a problem updating the record");
+			System.out.println(se.getMessage());
 		}
 
 	}
 
 	// continue coding for deleteRecords implementation
+	public void deleteRecords(int id) {
+		try {
+			statement = getConnection().createStatement();
+
+			//delete record entry in the tickets table with given id
+			statement.executeQuery("DELETE FROM smirza3_tickets WHERE ticket_id = " + id);
+
+			//print to console
+			System.out.println("Record " + id + " has been deleted...");
+
+			//close objects
+			statement.close();
+			connect.close();
+		}
+		catch (SQLException se) {
+			se.printStackTrace();
+			System.out.println("There was a problem deleting the record");
+			System.out.println(se.getMessage());
+		}
+
+	}
 }
