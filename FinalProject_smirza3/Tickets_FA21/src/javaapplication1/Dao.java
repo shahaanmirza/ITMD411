@@ -44,7 +44,7 @@ public class Dao {
 				"ticket_description VARCHAR(200), " +
 				"start_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
 				"end_date TIMESTAMP NULL," +
-				"status int)";
+				"status int DEFAULT 1)";
 		final String createUsersTable = "CREATE TABLE smirza3_users(uid INT AUTO_INCREMENT PRIMARY KEY, " +
 				"uname VARCHAR(30), " +
 				"upass VARCHAR(30), " +
