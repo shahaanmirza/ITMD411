@@ -35,7 +35,7 @@ public class Tickets extends JFrame implements ActionListener {
 	JMenuItem mnuItemViewTicket;
 
 	//add an option for users to close their ticket if they fix their own issue
-	JMenuItem mnuItemPrblmSolved;
+	JMenuItem mnuItemCloseTicket;
 
 	public Tickets(Boolean isAdmin) {
 
@@ -76,9 +76,9 @@ public class Tickets extends JFrame implements ActionListener {
 
 		// initialize any more desired sub menu items below
 		// ADDED:
-		mnuItemPrblmSolved = new JMenuItem("I Solved The Issue");
+		mnuItemCloseTicket = new JMenuItem("Close Ticket");
 		//add to Ticket Main menu item
-		mnuTickets.add(mnuItemPrblmSolved);
+		mnuTickets.add(mnuItemCloseTicket);
 
 
 		/* Add action listeners for each desired menu item *************/
@@ -88,7 +88,7 @@ public class Tickets extends JFrame implements ActionListener {
 		mnuItemOpenTicket.addActionListener(this);
 		mnuItemViewTicket.addActionListener(this);
 		//added:
-		mnuItemPrblmSolved.addActionListener(this);
+		mnuItemCloseTicket.addActionListener(this);
 
 		 /*
 		  * continue implementing any other desired sub menu items (like 
