@@ -184,12 +184,11 @@ public class Tickets extends JFrame implements ActionListener {
 					System.out.println("Record has been deleted");
 				}
 				else {
-					System.exit(0);
+					// empty
 				}
 			}
 			catch (Exception se) {
 				se.printStackTrace();
-				System.out.println("User did not continue with record deletion");
 			}
 		}
 
@@ -203,7 +202,7 @@ public class Tickets extends JFrame implements ActionListener {
 				//check for which parameter wants to be updated
 				// array with parameter choices
 				String[] choices = {"Update Name", "Update Description"};
-				String input = (String) JOptionPane.showInputDialog(null,
+				String response = (String) JOptionPane.showInputDialog(null,
 						"What would you like to update?",
 						"Update a Ticket",
 						JOptionPane.QUESTION_MESSAGE,
@@ -214,7 +213,7 @@ public class Tickets extends JFrame implements ActionListener {
 				//set input to oldparam value
 				String oldParam;
 				String newParam;
-				if(input.equals("Update Name")) {
+				if(response.equals("Update Name")) {
 					oldParam = "ticket_issuer";
 					newParam = JOptionPane.showInputDialog(null, "Enter new name");
 				}
@@ -230,9 +229,34 @@ public class Tickets extends JFrame implements ActionListener {
 			}
 			catch (Exception se) {
 				se.printStackTrace();
-				System.out.println("Could not update the ticket...");
 			}
 
+		}
+
+		else if (e.getSource() == mnuItemCloseTicket) {
+			try {
+				// get id of ticket
+				String ticketID = JOptionPane.showInputDialog(null, "Enter ticket to be closed");
+
+				//check to see if user wants to continue with close
+				int response = JOptionPane.showConfirmDialog(null,
+						"Do you want to continue with this action?",
+						"Close This Ticket",
+						JOptionPane.YES_NO_OPTION);
+				if (response == JOptionPane.YES_OPTION) {
+					// run close records
+					dao.closeRecords(ticketID);
+					JOptionPane.showMessageDialog(null,
+							"Ticket ID: " + ticketID + " was closed.");
+					System.out.println("Record has been closed");
+				}
+				else {
+					// empty
+				}
+			}
+			catch (Exception se) {
+				se.printStackTrace();
+			}
 		}
 	}
 
