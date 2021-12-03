@@ -39,13 +39,13 @@ public class Dao {
 
 	public void createTables() {
 		// variables for SQL Query table creations
-		final String createTicketsTable = "CREATE TABLE smirza3_tickets(ticket_id INT AUTO_INCREMENT PRIMARY KEY, " +
+		final String createTicketsTable = "CREATE TABLE smirza3_tickets_test(ticket_id INT AUTO_INCREMENT PRIMARY KEY, " +
 				"ticket_issuer VARCHAR(30), " +
 				"ticket_description VARCHAR(200), " +
 				"start_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
 				"end_date TIMESTAMP NULL," +
 				"status int DEFAULT 1)";
-		final String createUsersTable = "CREATE TABLE smirza3_users(uid INT AUTO_INCREMENT PRIMARY KEY, " +
+		final String createUsersTable = "CREATE TABLE smirza3_users_test(uid INT AUTO_INCREMENT PRIMARY KEY, " +
 				"uname VARCHAR(30), " +
 				"upass VARCHAR(30), " +
 				"admin int)";
@@ -103,7 +103,7 @@ public class Dao {
 			// and PASS (insert) that data into your User table
 			for (List<String> rowData : array) {
 
-				sql = "insert into smirza3_users(uname,upass,admin) " + "values('" + rowData.get(0) + "'," + " '"
+				sql = "insert into smirza3_users_test(uname,upass,admin) " + "values('" + rowData.get(0) + "'," + " '"
 						+ rowData.get(1) + "','" + rowData.get(2) + "');";
 				statement.executeUpdate(sql);
 			}
@@ -121,7 +121,7 @@ public class Dao {
 		int id = 0;
 		try {
 			statement = getConnection().createStatement();
-			statement.executeUpdate("INSERT INTO smirza3_tickets" + "(ticket_issuer, ticket_description) VALUES(" + " '"
+			statement.executeUpdate("INSERT INTO smirza3_tickets_test" + "(ticket_issuer, ticket_description) VALUES(" + " '"
 					+ ticketName + "','" + ticketDesc + "')", Statement.RETURN_GENERATED_KEYS);
 
 			// retrieve ticket id number newly auto generated upon record insertion
@@ -145,7 +145,7 @@ public class Dao {
 		ResultSet results = null;
 		try {
 			statement = connect.createStatement();
-			results = statement.executeQuery("SELECT * FROM smirza3_tickets");
+			results = statement.executeQuery("SELECT * FROM smirza3_tickets_test");
 			//connect.close();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -159,11 +159,11 @@ public class Dao {
 			statement = getConnection().createStatement();
 
 			//set update target to be the tickets table
-			statement.executeQuery("UPDATE smirza3_tickets");
+			statement.executeUpdate("UPDATE smirza3_tickets_test");
 			//apply updates to selected parameter (ticket_id, ticket_issuer, or ticket_description)
-			statement.executeQuery("SET " + oldParameter + " = '" + updatedParameter + "'");
+			statement.executeUpdate("SET " + oldParameter + " = '" + updatedParameter + "'");
 			//set update target to the ticket entry with provided id
-			statement.executeQuery("WHERE ticket_id = " + id);
+			statement.executeUpdate("WHERE ticket_id = " + id);
 
 			//print to console
 			System.out.println("Record " + id + " has been updated...");
@@ -187,7 +187,7 @@ public class Dao {
 			statement = getConnection().createStatement();
 
 			//delete record entry in the tickets table with given id
-			statement.executeQuery("DELETE FROM smirza3_tickets WHERE ticket_id = " + id);
+			statement.executeUpdate("DELETE FROM smirza3_tickets_test WHERE ticket_id = " + id);
 
 			//print to console
 			System.out.println("Record " + id + " has been deleted...");
@@ -209,13 +209,13 @@ public class Dao {
 			statement = getConnection().createStatement();
 
 			// set table target for update
-			statement.executeQuery("UPDATE smirza3_tickets");
+			statement.executeUpdate("UPDATE smirza3_tickets_test");
 
 			// update the status of the ticket and add an end_date timestamp
-			statement.executeQuery("SET status = '0', end_date = 'DEFAULT CURRENT_TIMESTAMP'");
+			statement.executeUpdate("SET status = '0', end_date = 'DEFAULT CURRENT_TIMESTAMP'");
 
 			// set ticket selection criteria for update
-			statement.executeQuery("WHERE ticket_id = " + id);
+			statement.executeUpdate("WHERE ticket_id = " + id);
 
 			// print to console
 			System.out.println("Ticket ID: " + id + " has been closed...");
