@@ -39,9 +39,9 @@ public class Tickets extends JFrame implements ActionListener {
 
 	public Tickets(Boolean isAdmin) {
 
-		chkIfAdmin = isAdmin;
-		createMenu();
-		prepareGUI();
+		chkIfAdmin = isAdmin; // checks if the user that logged in is admin (1) or not (0)
+		createMenu(); // runs the create menu method to add menu items
+		prepareGUI(); // creates a gui
 
 	}
 
@@ -72,7 +72,7 @@ public class Tickets extends JFrame implements ActionListener {
 		// initialize second sub menu item for Tickets main menu
 		mnuItemViewTicket = new JMenuItem("View Ticket");
 		// add to Ticket Main menu item
-		mnuTickets.add(mnuItemViewTicket);
+		mnuAdmin.add(mnuItemViewTicket);
 
 		// initialize any more desired sub menu items below
 		// ADDED:
@@ -104,7 +104,12 @@ public class Tickets extends JFrame implements ActionListener {
 		// create JMenu bar
 		JMenuBar bar = new JMenuBar();
 		bar.add(mnuFile); // add main menu items in order, to JMenuBar
-		bar.add(mnuAdmin);
+		if(chkIfAdmin == true) {
+			bar.add(mnuAdmin);
+		}
+		else {
+			//empty
+		}
 		bar.add(mnuTickets);
 		// add menu bar components to frame
 		setJMenuBar(bar);
