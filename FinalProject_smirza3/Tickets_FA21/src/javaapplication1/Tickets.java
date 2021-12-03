@@ -127,7 +127,8 @@ public class Tickets extends JFrame implements ActionListener {
 		// implement actions for sub menu items
 		if (e.getSource() == mnuItemExit) {
 			System.exit(0);
-		} else if (e.getSource() == mnuItemOpenTicket) {
+		}
+		else if (e.getSource() == mnuItemOpenTicket) {
 
 			// get ticket information
 			String ticketName = JOptionPane.showInputDialog(null, "Enter your name");
