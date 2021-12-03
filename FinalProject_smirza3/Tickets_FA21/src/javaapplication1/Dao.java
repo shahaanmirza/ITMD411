@@ -201,6 +201,33 @@ public class Dao {
 			System.out.println("There was a problem deleting the record");
 			System.out.println(se.getMessage());
 		}
+	}
 
+	// close records implementation
+	public void closeRecords(String id) {
+		try {
+			statement = getConnection().createStatement();
+
+			// set table target for update
+			statement.executeQuery("UPDATE smirza3_tickets");
+
+			// update the status of the ticket and add an end_date timestamp
+			statement.executeQuery("SET status = '0', end_date = 'DEFAULT CURRENT_TIMESTAMP'");
+
+			// set ticket selection criteria for update
+			statement.executeQuery("WHERE ticket_id = " + id);
+
+			// print to console
+			System.out.println("Ticket ID: " + id + " has been closed...");
+
+			//close objects
+			statement.close();
+			connect.close();
+		}
+		catch (SQLException se) {
+			se.printStackTrace();
+			System.out.println("There was a problem closing the record");
+			System.out.println(se.getMessage());
+		}
 	}
 }
