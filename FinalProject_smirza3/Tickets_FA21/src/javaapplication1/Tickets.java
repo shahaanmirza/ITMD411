@@ -185,7 +185,7 @@ public class Tickets extends JFrame implements ActionListener {
 					System.out.println("Record has been deleted");
 				}
 				else {
-					// empty
+					dispose();
 				}
 			}
 			catch (Exception se) {
@@ -252,7 +252,7 @@ public class Tickets extends JFrame implements ActionListener {
 					System.out.println("Record has been closed");
 				}
 				else {
-					// empty
+					dispose();
 				}
 			}
 			catch (Exception se) {
