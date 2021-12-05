@@ -144,7 +144,7 @@ public class Dao {
 
 		ResultSet results = null;
 		try {
-			statement = connect.createStatement();
+			statement = getConnection().createStatement();
 			results = statement.executeQuery("SELECT * FROM smirza3_tickets_test");
 			//connect.close();
 		} catch (SQLException e1) {
@@ -159,11 +159,11 @@ public class Dao {
 			statement = getConnection().createStatement();
 
 			//set update target to be the tickets table
-			statement.executeUpdate("UPDATE smirza3_tickets_test");
+			statement.executeUpdate("UPDATE smirza3_tickets_test SET " + oldParameter + " = '" + updatedParameter + "' WHERE ticket_id = " + id + ";");
 			//apply updates to selected parameter (ticket_id, ticket_issuer, or ticket_description)
-			statement.executeUpdate("SET " + oldParameter + " = '" + updatedParameter + "'");
+			//statement.executeUpdate("SET " + oldParameter + " = '" + updatedParameter + "'");
 			//set update target to the ticket entry with provided id
-			statement.executeUpdate("WHERE ticket_id = " + id);
+			//statement.executeUpdate("WHERE ticket_id = " + id);
 
 			//print to console
 			System.out.println("Record " + id + " has been updated...");
@@ -209,13 +209,13 @@ public class Dao {
 			statement = getConnection().createStatement();
 
 			// set table target for update
-			statement.executeUpdate("UPDATE smirza3_tickets_test");
+			statement.executeUpdate("UPDATE tickets.smirza3_tickets_test SET status = '0', end_date = current_timestamp() WHERE ticket_id = " + id + ";");
 
 			// update the status of the ticket and add an end_date timestamp
-			statement.executeUpdate("SET status = '0', end_date = 'DEFAULT CURRENT_TIMESTAMP'");
+			//statement.executeUpdate("");
 
 			// set ticket selection criteria for update
-			statement.executeUpdate("WHERE ticket_id = " + id);
+			//statement.executeUpdate("WHERE ticket_id = " + id);
 
 			// print to console
 			System.out.println("Ticket ID: " + id + " has been closed...");

@@ -242,7 +242,7 @@ public class Tickets extends JFrame implements ActionListener {
 		else if (e.getSource() == mnuItemCloseTicket) {
 			try {
 				// get id of ticket
-				String ticketID = JOptionPane.showInputDialog(null, "Enter ticket to be closed");
+				String ticketID = JOptionPane.showInputDialog(null, "Enter Ticket ID to be closed");
 
 				//check to see if user wants to continue with close
 				int response = JOptionPane.showConfirmDialog(null,
